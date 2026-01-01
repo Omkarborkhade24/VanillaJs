@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW2</title>
+  </head>
+
+  <body>
+    <h1>JokeAPI - Programming Joke</h1>
+    <button id="getProgrammingJokeBtn">Get Programming Joke</button>
+    <div id="jokeContainer"></div>
+  </body>
+
+  <script>
+    const getJokeBtn = document.querySelector('#getProgrammingJokeBtn');
+    const jokeContainer = document.querySelector('#jokeContainer');
+
+    const apiUrl = 'https://v2.jokeapi.dev/joke/Programming?type=single';
+
+    getJokeBtn.addEventListener('click', function () {
+      fetch(apiUrl)
+        .then(function responseHandeler(response) {
+          return response.json();
+        })
+        .then(function showData(data) {
+          console.log(data);
+          jokeContainer.innerHTML = `${data.joke}`;
+        })
+        .catch(function showError(error) {
+          jokeContainer.textContent = 'An error occure while fetching data.';
+        });
+    });
+  </script>
+</html>
