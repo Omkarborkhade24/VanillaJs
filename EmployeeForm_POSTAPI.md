@@ -6,7 +6,7 @@ Checklist Protocol 📝
 
 ☑️ Task 3: Test the code and check into the API if the Data is Present or Not.
 
-☑️ Task 5: Deploy to GitHub Pages.
+☑️ Task 4: Deploy to GitHub Pages.
 
 Working Link: https://stackblitz.com/edit/vitejs-vite-blup2buh?file=index.html
 
