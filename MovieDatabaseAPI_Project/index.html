@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <div class="container mt-4 py-2">
+    <h1>Movie Database</h1>
+
+    <h2 class="mt-4">GET Movies</h2>
+    <button id="getData" class="btn btn-primary">Get Movies</button>
+    <div id="getDataContainer"></div>
+
+    <form id="getPostMovieForm">
+      <h2 class="mt-2">POST Movie</h2>   
+      <label for="movieTitle">Title:</label><br />
+      <input id="movieTitle" class="form-control"/><br />
+      <label for="movieYear">Release Year:</label><br>
+      <input id="movieYear" class="form-control" type="number"></input>
+      <label for="movieGenre">Genre:</label><br />
+      <select id="movieGenre" class="form-select">
+        <option value="Action">Action</option>
+        <option value="Drama">Drama</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Romance">Romance</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Fantsy">Fantsy</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Horror">Horror</option>
+        <option value="Sports">Sports</option>
+        <option value="Musical">Musical</option>
+        <option value="Other">Other</option>
+      </select><br>
+      <label for="movieDirector">Director:</label><br />
+      <input id="movieDirector" class="form-control"/><br />
+      <label for="movieLanguage">Language:</label><br />
+      <input id="movieLanguage" class="form-control"/><br />
+      <label for="movieCountry">Country:</label><br />
+      <select id="movieCountry" class="form-select">
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+      </select><br>
+      <label for="movieRating">Rating:</label><br>
+      <input id="movieRating" class="form-control" type="number"></input>
+      <label>Plot</label><br>
+      <textarea col="25" row="2" class="form-control"></textarea><br>
+      <label for="movieAwards">Awards:</label><br />
+      <input id="movieAwards" class="form-control"/><br />
+      <label for="posterURL">Poster URL:</label><br />
+      <input id="posterURL" class="form-control" type="url"/><br />
+      <label for="trailerURL">Trailer URL:</label><br />
+      <input id="trailerURL" class="form-control" type="url"/><br />
+
+      <br />
+      <button class="btn btn-success">Submit</button>
+    </form>
+    <div id="postContainer"></div>
+  </div>
+
+    <script>
+      const getPostMovieForm = document.querySelector('#getPostMovieForm');
+      const movieTitle = document.querySelector('#movieTitle');
+      const movieYear = document.querySelector('#movieYear');
+      const movieGenre = document.querySelector('#movieGenre');
+      const movieDirector = document.querySelector('#movieDirector');
+      const movieLanguage = document.querySelector('#movieLanguage');
+      const movieCountry = document.querySelector('#movieCountry');
+      const movieRating = document.querySelector('#movieRating');
+      const movieAwards = document.querySelector('#movieAwards');
+      const posterURL = document.querySelector('#posterURL');
+      const trailerURL = document.querySelector('#trailerURL'); 
+      const postContainer = document.querySelector('#postContainer');
+      const getDataContainer = document.querySelector('#getDataContainer');
+      const apiUrl = 'https://va-5-assignment-express-student-neog.replit.app/movies'
+
+      getData.addEventListener('click', function () {
+        getDataContainer.innerHTML = ``;
+        fetch(apiUrl)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            if (data) {
+              for (let i = 0; i < data.length; i++) {
+                const divElements = document.createElement('div');
+                divElements.className = 'mt-4 mb-2'
+                divElements.innerHTML = `<div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Movie ID:${(data[i]._id)}</h5>
+                    ${JSON.stringify(data[i])}
+                    </div>
+                  </div>`
+
+                getDataContainer.appendChild(divElements);
+              }
+            } else {
+              getDataContainer.textContainer = 'Failed to fetch Movie data Form.';
+            }
+          })
+          .catch(function (error) {
+            getDataContainer.textContainer =
+              'An error occured while getting the Movie data Form.';
+          });
+      });
+      getPostMovieForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const postData = {
+          title: movieTitle.value,
+          releaseYear: movieYear.value,
+          genre: movieGenre.value,
+          director: movieDirector.value,
+          language: movieLanguage.value,
+          country: movieCountry.value,
+          rating: movieRating.value,
+          awards: movieAwards.value,
+          posterUrl: posterURL.value,
+          trailerUrl: trailerURL.value, 
+        };
+
+        fetch(apiUrl, {
+          method: 'POST',
+          body: JSON.stringify(postData),
+          headers: {
+            'content-type': 'application/json',
+          },
+        })
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            if (data) {
+              postContainer.textContent = 'Movie data added successfully.';
+            } else {
+              postContainer.textContent = 'Failed to add Movie data.';
+            }
+          })
+          .catch(function (error) {
+            postContainer.textContent = 'An error occured while creating POST Movie data Request.';
+          });
+      });
+    </script>
+  </body>
+</html>
