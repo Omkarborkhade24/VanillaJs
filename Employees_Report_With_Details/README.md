@@ -4,7 +4,7 @@ Checklist Protocol 📝
 
 ☑️ Task 2: Create A Add Employee Form.
 
-☑️ Task 3: Test the code and check into the Employees List Tab if the details is Present or Not.
+☑️ Task 3: Test the code and check into the Employees Tab if the details is Present or Not.
 
 ☑️ Task 4: Deploy to GitHub Pages.
 
