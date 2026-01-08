@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Company Employees</title>
+  </head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+  <body>
+    <header class="bg-dark text-light text-center py-3">
+      <h1>List of Employees</h1>
+    </header>
+
+    <main class="container mt-4">
+      <section class="container mt-4">
+        <div>
+          <label for="dpFilter">Filter By Role:</label>
+          <select id="dpFilter">
+            <option value="All">All Departments</option>
+            <option value="IT">IT</option>
+            <option value="Design">Design</option>
+            <option value="Management">Management</option>
+          </select>
+        </div>
+
+        <h2 class="mt-4">Add Employee</h2>
+        <form>
+          <div class="mb-3">
+            <label for="employeeName">Name:</label><br />
+            <input
+              class="form-control"
+              id="employeeName"
+              type="text"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="employeeTitle">Title:</label><br />
+            <input
+              class="form-control"
+              id="employeeTitle"
+              type="text"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="employeeDP">Department:</label><br />
+            <select class="form-select" id="employeeDP" required>
+              <option value="">Select a department:</option>
+              <option value="IT">IT</option>
+              <option value="Design">Design</option>
+              <option value="Management">Management</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="addEmployeeButton">
+            Add Player
+          </button>
+        </form>
+      </section>
+
+      <section class="container mt-4">
+        <div id="employeeList" class="row"></div>
+      </section>
+
+      <script>
+        let employees = [
+          {
+            id: "1",
+            name: "John Doe",
+            title: "Software Developer",
+            department: "IT",
+          },
+          {
+            id: "2",
+            name: "Jane Smith",
+            title: "Designer",
+            department: "Design",
+          },
+          {
+            id: "3",
+            name: "Bob Johnson",
+            title: "Project Manager",
+            department: "Management",
+          },
+        ];
+
+        const addEmployeeButton = document.querySelector("#addEmployeeButton");
+        const employeeList = document.querySelector("#employeeList");
+        const dpFilter = document.querySelector("#dpFilter");
+
+        function updateEmployeeList(filteredEmployees) {
+          employeeList.innerHTML = "";
+
+          for (let i = 0; i < filteredEmployees.length; i++) {
+            const ul = document.createElement("ul");
+            ul.className = "list-group";
+
+            const list = document.createElement("li");
+            list.className =
+              "list-group-item d-flex justify-content-between align-items-center";
+
+            const listInfo = document.createElement("div");
+            const h5 = document.createElement("h5");
+            h5.textContent = filteredEmployees[i].name;
+            const emTitle = document.createElement("p");
+            emTitle.textContent = filteredEmployees[i].title;
+
+            const emDL = document.createElement("a");
+            emDL.className = "btn btn-link";
+            emDL.href = `employeeDetails.html?id=${filteredEmployees[i].id}`;
+            emDL.textContent = "Details";
+
+            listInfo.appendChild(h5);
+            listInfo.appendChild(emTitle);
+
+            list.appendChild(listInfo);
+            list.appendChild(emDL);
+
+            ul.appendChild(list);
+
+            employeeList.appendChild(ul);
+          }
+        }
+
+        addEmployeeButton.addEventListener("click", function () {
+          const employeeName = document.querySelector("#employeeName").value;
+          const employeeTitle = document.querySelector("#employeeTitle").value;
+          const employeeDP = document.querySelector("#employeeDP").value;
+
+          if (employeeName && employeeTitle && employeeDP) {
+            const newEmployeeId = employees.length + 1;
+            const newEmployee = {
+              id: newEmployeeId,
+              name: employeeName,
+              title: employeeTitle,
+              department: employeeDP,
+            };
+
+            employees.push(newEmployee);
+
+            updateEmployeeList(employees);
+          }
+        });
+
+        dpFilter.addEventListener("change", applyRoleFilter);
+
+        function applyRoleFilter() {
+          const selectedDp = dpFilter.value;
+          console.log(selectedDp);
+          const filteredEmployees = [];
+
+          if (selectedDp === "All") {
+            for (let i = 0; i < employees.length; i++) {
+              filteredEmployees.push(employees[i]);
+            }
+          }
+          if (selectedDp !== "All") {
+            for (let i = 0; i < employees.length; i++) {
+              if (employees[i].department === selectedDp) {
+                filteredEmployees.push(employees[i]);
+              }
+            }
+          }
+
+          updateEmployeeList(filteredEmployees);
+        }
+
+        updateEmployeeList(employees);
+      </script>
+
+      <!-- <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h5>John Doe</h5>
+            <p>Software Developer</p>
+          </div>
+          <a class="btn btn-link" href="employeeDetails.html?id=1"
+            >View Details</a
+          >
+        </li>
+
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h5>Jane Smith</h5>
+            <p>Designer</p>
+          </div>
+          <a class="btn btn-link" href="employeeDetails.html?id=2"
+            >View Details</a
+          >
+        </li>
+
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h5>Bob Johnson</h5>
+            <p>Project Manager</p>
+          </div>
+          <a class="btn btn-link" href="employeeDetails.html?id=3"
+            >View Details</a
+          >
+        </li>
+      </ul> -->
+    </main>
+  </body>
+</html>
