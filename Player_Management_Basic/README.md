@@ -6,7 +6,7 @@ Checklist Protocol 📝
 
 ☑️ Task 3: Check Player Details And Report.
 
-☑️ Task 4: Test the code and check into the Playes List Tab if the Data is Present or Not, then Delete any List using Delete Button.
+☑️ Task 4: Test the code.
 
 ☑️ Task 5: Deploy to GitHub Pages.
 
