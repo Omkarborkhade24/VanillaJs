@@ -2,9 +2,9 @@ Checklist Protocol 📝
 
 ☑️ Task 1: Set up A Web Page.
 
-☑️ Task 4: Test the code and check into the random Todo if the Todo Data is Loading or Not.
+☑️ Task 2: Test the code and check into the random Todo if the Todo Data is Loading or Not.
 
-☑️ Task 5: Deploy to GitHub Pages.
+☑️ Task 3: Deploy to GitHub Pages.
 
 Working Link: https://stackblitz.com/edit/vitejs-vite-fakrr5zx?file=index.html
 
