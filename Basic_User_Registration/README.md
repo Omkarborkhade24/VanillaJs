@@ -2,9 +2,9 @@ Checklist Protocol 📝
 
 ☑️ Task 1: Set up A Basic User Registration Web Page.
 
-☑️ Task 4: Test the code.
+☑️ Task 2: Test the code.
 
-☑️ Task 5: Deploy to GitHub Pages.
+☑️ Task 3: Deploy to GitHub Pages.
 
 Working Link: https://stackblitz.com/edit/vitejs-vite-q2txdg2f?file=index.html
 
