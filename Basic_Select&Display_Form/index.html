@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <label>Program 1: Select a mood:</label>
+    <input type="radio" name="mood" value="Happy" /> Happy
+    <input type="radio" name="mood" value="Sad" /> Sad
+    <input type="radio" name="mood" value="Excited" /> Excited
+    <p id="moodResult"></p>
+
+    <label>Program 2: Choose a book genre:</label>
+    <input type="radio" name="bookGenre" value="mystery" /> Mystery
+    <input type="radio" name="bookGenre" value="romance" /> Romance
+    <input type="radio" name="bookGenre" value="Science Fiction" /> Science
+    Fiction
+    <button id="bookBtn">Display Book Recommendation</button>
+    <p id="bookResult"></p>
+
+    <label>Program 3: Select a clothing style:</label>
+    <input type="radio" name="clothingStyle" value="casual" /> Casual
+    <input type="radio" name="clothingStyle" value="formal" /> Formal
+    <input type="radio" name="clothingStyle" value="sporty" /> Sporty
+    <button id="clothingBtn">Display Selected Style</button>
+    <p id="clothingResult"></p>
+
+    <label>Program 4: Choose a weather preference:</label>
+    <input type="radio" name="weather" value="sunny" /> Sunny
+    <input type="radio" name="weather" value="rainy" /> Rainy
+    <input type="radio" name="weather" value="snowy" /> Snowy
+    <button id="weatherBtn">Display Selected Weather Preferences</button>
+    <p id="weatherResult"></p>
+
+    <label>Program 5: Select a travel mode:</label>
+    <input type="radio" name="travel" value="car" /> Car
+    <input type="radio" name="travel" value="train" /> Train
+    <input type="radio" name="travel" value="plane" /> Plain
+    <p id="travelResult"></p>
+
+    <script>
+      const selectMood = document.getElementsByName('mood');
+      const moodGenre = document.getElementById('moodResult');
+
+      for (let i = 0; i < selectMood.length; i++) {
+        selectMood[i].addEventListener('change', function () {
+          const selectedMood = document.querySelector(
+            'input[name="mood"]:checked'
+          ).value;
+          moodGenre.textContent = `Selected Mood: ${selectedMood}`;
+        });
+      }
+
+      const selectBook = document.getElementsByName('bookGenre');
+      const bookChoice = document.getElementById('bookResult');
+
+      bookBtn.addEventListener('click', function () {
+        const selectedBook = document.querySelector(
+          'input[name="bookGenre"]:checked'
+        );
+        if (selectedBook) {
+          bookChoice.textContent = `Book Recommendation for ${selectedBook.value} genre.`;
+        } else {
+          bookChoice.textContent = `Please select a book genre`;
+        }
+      });
+
+      const selectCloths = document.getElementsByName('clothingStyle');
+      const clothingChoice = document.getElementById('clothingResult');
+
+      clothingBtn.addEventListener('click', function () {
+        const selectedCloths = document.querySelector(
+          'input[name="clothingStyle"]:checked'
+        );
+        if (selectedCloths) {
+          clothingChoice.textContent = `Selected Clothing Style: ${selectedCloths.value}`;
+        } else {
+          clothingChoice.textContent = `Please select a clothing style`;
+        }
+      });
+
+      const selectWeather = document.getElementsByName('weather');
+      const weatherChoice = document.getElementById('weatherResult');
+
+      weatherBtn.addEventListener('click', function () {
+        const selectedWeather = document.querySelector(
+          'input[name="weather"]:checked'
+        );
+        if (selectedWeather) {
+          weatherChoice.textContent = `Selected Weather Preference: ${selectedWeather.value}`;
+        } else {
+          weatherChoice.textContent = `Please select a weather preference`;
+        }
+      });
+
+      const selectTravel = document.getElementsByName('travel');
+      const travelChoice = document.getElementById('travelResult');
+
+      for (let i = 0; i < selectTravel.length; i++) {
+        selectTravel[i].addEventListener('change', function () {
+          const selectedTravel = document.querySelector(
+            'input[name="travel"]:checked'
+          ).value;
+          travelChoice.textContent = `Selected Travel Mode: ${selectedTravel}`;
+        });
+      }
+    </script>
+  </body>
+</html>
