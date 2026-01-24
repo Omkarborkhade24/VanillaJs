@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <form id="feedbackForm">
+      <h1>Feedback Form</h1>
+
+      <label for="userName">Name:</label>
+      <input type="text" id="userName" />
+      <br /><br />
+
+      <label for="feedBack">Feedback:</label><br />
+      <textarea id="feedBack" row="5" cols="30"></textarea>
+      <br /><br />
+
+      <label>Rate our service:</label><br />
+      <label for="excellent"
+        ><input type="radio" name="services" value="Excellent" id="excellent" />
+        Excellent</label
+      ><br />
+      <label for="good"
+        ><input type="radio" name="services" value="Good" id="good" />
+        Good</label
+      ><br />
+      <label for="fair"
+        ><input type="radio" name="services" value="Fair" id="fair" />
+        Fair</label
+      ><br /><br />
+
+      <label>Select Topics of Interest:</label><br />
+      <label for="technology"
+        ><input
+          type="checkbox"
+          name="interests"
+          value="Technology"
+          id="technology"
+        />
+        Technology</label
+      ><br />
+      <label for="travel"
+        ><input type="checkbox" name="interests" value="Travel" id="travel" />
+        Travel</label
+      ><br />
+      <label for="food"
+        ><input type="checkbox" name="interests" value="Food" id="food" />
+        Food</label
+      ><br />
+      <br />
+
+      <label>Overall Experience:</label><br />
+      <select id="selectExperience">
+        <option value="Very Satisfied">Very Satisfied</option>
+        <option value="Satisfied">Satisfied</option>
+        <option value="Neutral">Neutral</option>
+      </select>
+      <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <div id="formResult"></div>
+
+    <script>
+      const feedbackForm = document.getElementById('feedbackForm');
+      feedbackForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const userName = document.getElementById('userName').value;
+        const feedBack = document.getElementById('feedBack').value;
+        const services = document.querySelector(
+          'input[name="services"]:checked'
+        ).value;
+        const interests = document.querySelectorAll(
+          'input[name="interests"]:checked'
+        );
+        let selectedInterests = [];
+        for (let i = 0; i < interests.length; i++) {
+          selectedInterests.push(interests[i].value);
+        }
+
+        const selectExperience =
+          document.getElementById('selectExperience').value;
+
+        const userInputValues = `<h2>Feedback Submitted:</h2>
+    <p><strong>Name:</strong> ${userName}</p>
+    <p><strong>Feedback:</strong> ${feedBack}</p>
+    <p><strong>Service Rating:</strong> ${services}</p>
+    <p><strong>Topics of Interest:</strong> ${selectedInterests.join(', ')}</p>
+    <p><strong>Overall Experience:</strong> ${selectExperience}</p>`;
+
+        const divElement = document.getElementById('formResult');
+        divElement.innerHTML = userInputValues;
+      });
+    </script>
+  </body>
+</html>
