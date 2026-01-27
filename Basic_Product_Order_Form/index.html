@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <form id="productOrderForm">
+      <h1>Product Order Form</h1>
+
+      <label>Product Name:</label><br />
+      <select id="productName">
+        <option value="Product A">Product A</option>
+        <option value="Product B">Product B</option>
+        <option value="Product C">Product C</option>
+      </select>
+      <br /><br />
+
+      <label for="quantity">Quantity:</label><br />
+      <input type="number" id="quantity" value="1" />
+      <br /><br />
+
+      <label for="shippingAddress">Shippping Address:</label><br />
+      <textarea id="shippingAddress" row="5" cols="30"></textarea>
+      <br /><br />
+
+      <label>Payment Method:</label><br />
+      <label for="credit-card"
+        ><input
+          type="radio"
+          name="payment"
+          value="Credit Card"
+          id="credit-card"
+        />
+        Credit Card</label
+      ><br />
+      <label for="pay-pal"
+        ><input type="radio" name="payment" value="PayPal" id="pay-pal" />
+        PayPal</label
+      ><br />
+      <label for="bank-transfer"
+        ><input
+          type="radio"
+          name="payment"
+          value="Bank Transfer"
+          id="bank-transfer"
+        />
+        Bank Transfer</label
+      ><br />
+      <br />
+
+      <label>Delivery Speed:</label><br />
+      <select id="deliverySpeed">
+        <option value="Standard">Standard</option>
+        <option value="Express">Express</option>
+        <option value="Same Day">Same Day</option>
+      </select>
+      <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <div id="formResult"></div>
+
+    <script>
+      const productOrderForm = document.getElementById('productOrderForm');
+      productOrderForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const productName = document.getElementById('productName').value;
+        const quantity = document.getElementById('quantity').value;
+        const shippingAddress =
+          document.getElementById('shippingAddress').value;
+        const payment = document.querySelector(
+          'input[name="payment"]:checked'
+        ).value;
+
+        const deliverySpeed = document.getElementById('deliverySpeed').value;
+
+        const userInputValues = `<h2>Order Details:</h2>
+    <p><strong>Name:</strong> ${productName}</p>
+    <p><strong>Quantity:</strong> ${quantity}</p>
+    <p><strong>Shipping Address:</strong> ${shippingAddress}</p>
+    <p><strong>Payment Method:</strong> ${payment}</p>
+    <p><strong>Delivery Speed:</strong> ${deliverySpeed}</p>`;
+
+        const divElement = document.getElementById('formResult');
+        divElement.innerHTML = userInputValues;
+      });
+    </script>
+  </body>
+</html>
