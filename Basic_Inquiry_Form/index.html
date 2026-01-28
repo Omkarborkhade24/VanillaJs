@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inquiry Form</title>
+</head>
+
+<body>
+  <main>
+    <form id="enrollmentForm">
+      <label for="fullName"><strong>Full Name:</strong></label>
+      <input type="text" id="fullName" />
+      <br /><br />
+
+      <label for="phoneNumber"><strong>Phone Number:</strong></label>
+      <input type="number" id="phoneNumber" />
+      <br /><br />
+
+      <label for="emailAddress"><strong>Email Id:</strong></label>
+      <input type="email" id="emailAddress" />
+      <br /><br />
+
+      <label><strong>Gender:</strong></label><br />
+      <label for="male"
+        ><input type="radio" name="gender" value="Male" id="male" /> Male</label><br />
+      <label for="female"
+        ><input type="radio" name="gender" value="Female" id="female" />
+        Female</label><br />
+      <label for="other"
+        ><input type="radio" name="gender" value="Other" id="other" />
+        Other</label><br /><br />
+
+      <label><strong>Are you a college graduate?:</strong></label><br />
+      <label for="yes"
+        ><input type="radio" name="isGraduate" value="Yes" id="yes" />
+        Yes</label><br />
+      <label for="no"
+        ><input type="radio" name="isGraduate" value="No" id="no" /> No</label><br />
+      <label for="dropout"
+        ><input type="radio" name="isGraduate" value="Dropout" id="dropout" />
+        Dropout</label><br />
+      <br />
+
+      <strong><label>Are you working anywhere full-time or part-time?:</label></strong><br />
+      <select id="workingStatus">
+        <option value="Working Full Time">Working Full Time</option>
+        <option value="Working Part Time">Working Part Time</option>
+        <option value="Not Working Anywhere">Not Working Anywhere</option>
+      </select>
+      <br /><br />
+
+      <label for="learningMotto"><strong>Why do you want to learn web development?:</strong></label>
+      <br />
+      <textarea id="learningMotto" rows="7" cols="50"></textarea>
+      <br /><br />
+
+      <strong><label>How did you come to know about us?</label></strong> <br />
+
+      <label for="youtube"><input type="checkbox" name="socialChannels" value="Youtube" id="youtube" /> Youtube</label> <br />
+
+      <label for="instagram"><input type="checkbox" name="socialChannels" value="Instagram" id="instagram" /> Instagram</label> <br />
+
+      <label for="linkedin"><input type="checkbox" name="socialChannels" value="LinkedIn" id="linkedin" /> LinkedIn</label> <br />
+
+      <label for="twitter"><input type="checkbox" name="socialChannels" value="Twitter" id="twitter" /> Twitter</label> <br />
+
+      <label for="friends&family"><input type="checkbox" name="socialChannels" value="Friends and Family" id="friends&family"/>Friends And Family</label> <br />
+      <label for="other1"><input type="checkbox" name="socialChannels" value="Other" id="other1"/>Other</label> <br />
+
+      <br /><br />
+      <lebel for="term1"><input
+        type="checkbox"
+        name="confirm"
+        value="I confirm that all information in this form is factually true." id="term1"
+      /><strong
+        >I confirm that all information in this form is factually true.</label></strong>
+
+        <br /><br />
+
+        <input type="submit" value="Submit Details" />
+    </form>
+
+    <div id="formResult"></div>
+  </main>
+
+  <script>
+    const enrollmentForm = document.getElementById('enrollmentForm');
+      enrollmentForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const fullName = document.getElementById('fullName').value;
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const emailAddress = document.getElementById('emailAddress').value;
+        const gender = document.querySelector(
+          'input[name="gender"]:checked'
+        ).value;
+        const isGraduate = document.querySelector(
+          'input[name="isGraduate"]:checked'
+        ).value;
+        const workingStatus = document.getElementById('workingStatus').value;
+        const learningMotto = document.getElementById('learningMotto').value;
+        const socialChannels = document.querySelectorAll(
+          'input[name="socialChannels"]:checked'
+        );
+        let selectedSocialChannels = [];
+        for (let i = 0; i < socialChannels.length; i++) {
+          selectedSocialChannels.push(socialChannels[i].value);
+        }
+
+        const userInputValues = `<h2>Details Submitted:</h2>
+    <p><strong>Name:</strong> ${fullName}</p>
+    <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+    <p><strong>Email ID:</strong> ${emailAddress}</p>
+    <p><strong>Gender:</strong> ${gender}</p>
+    <p><strong>Are you a college graduate?:</strong> ${isGraduate}</p>
+    <p><strong>Are you working anywhere full-time or part-time?:</strong> ${workingStatus}</p>
+    <p><strong>Why do you want to learn web development?:</strong> ${learningMotto}</p>
+    <p><strong>How did you come to know about us?:</strong> ${selectedSocialChannels.join(
+      ', '
+    )}</p>`;
+
+        const divElement = document.getElementById('formResult');
+        divElement.innerHTML = userInputValues;
+      });
+  </script>
+</body>
+
+</html>
