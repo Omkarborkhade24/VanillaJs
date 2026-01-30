@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <label>Choose a season:</label>
+    <select id="weatherType">
+      <option value="spring">Spring</option>
+      <option value="summer">Summer</option>
+      <option value="fall">Fall</option>
+      <option value="winter">Winter</option>
+    </select>
+    <button id="weatherBtn">Display Typical Weather</button>
+    <p id="weatherResult"></p>
+
+    <label>Choose a movie genre:</label>
+    <select id="movieGenre">
+      <option value="scienceFiction">Science Fiction</option>
+      <option value="mystery">Mystery</option>
+      <option value="romance">Romance</option>
+    </select>
+    <button id="movieBtn">Display Movie Recommendation</button>
+    <p id="movieResult"></p>
+
+    <label>Select a pet:</label>
+    <select id="bestPet">
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="fish">Fish</option>
+    </select>
+    <button id="petBtn">Display Pet Description</button>
+    <p id="petResult"></p>
+
+    <label>Choose a musical instrument:</label>
+    <select id="musicalInstruments">
+      <option value="guitar">Guitar</option>
+      <option value="piano">Piano</option>
+      <option value="violin">Violin</option>
+    </select>
+    <p id="musicalResult"></p>
+
+    <label>Choose a planet:</label>
+    <select id="galaxyPlanets">
+      <option value="earth">Earth</option>
+      <option value="mars">Mars</option>
+      <option value="jupiter">Jupiter</option>
+    </select>
+    <button id="planetBtn">Display Planet Fact</button>
+    <p id="planetResult"></p>
+
+    <script>
+      const selectWeather = document.getElementById('weatherType');
+      const weatherSpeciality = document.getElementById('weatherResult');
+
+      selectWeather.addEventListener('change', function () {
+        const selectedWeather = selectWeather.value;
+        const weatherTip = {
+          spring: 'Cold temperatures and snowfall.',
+          summer: 'Hot temperatures and sunny days.',
+          fall: 'Cooler temperatures and falling leaves.',
+          winter: 'Cold temperatures and snowfall.',
+        };
+        weatherBtn.addEventListener('click', function () {
+          if (selectedWeather === 'spring') {
+            weatherSpeciality.textContent = `Typical Weather: ${weatherTip[selectedWeather]}`;
+          } else if (selectedWeather === 'summer') {
+            weatherSpeciality.textContent = `Typical Weather: ${weatherTip[selectedWeather]}`;
+          } else if (selectedWeather === 'fall') {
+            weatherSpeciality.textContent = `Typical Weather: ${weatherTip[selectedWeather]}`;
+          } else if (selectedWeather === 'winter') {
+            weatherSpeciality.textContent = `Typical Weather: ${weatherTip[selectedWeather]}`;
+          }
+        });
+      });
+
+      const selectMovie = document.getElementById('movieGenre');
+      const movieTitle = document.getElementById('movieResult');
+
+      selectMovie.addEventListener('change', function () {
+        const selectedMovie = selectMovie.value;
+        const movieName = {
+          scienceFiction: 'Dune',
+          mystery: 'Gone Girl',
+          romance: 'Pride and Prejudice',
+        };
+        movieBtn.addEventListener('click', function () {
+          if (selectedMovie === 'scienceFiction') {
+            movieTitle.textContent = `Movie Recommendation: ${movieName[selectedMovie]}`;
+          } else if (selectedMovie === 'mystery') {
+            movieTitle.textContent = `Movie Recommendation: ${movieName[selectedMovie]}`;
+          } else if (selectedMovie === 'romance') {
+            movieTitle.textContent = `Movie Recommendation: ${movieName[selectedMovie]}`;
+          }
+        });
+      });
+
+      const selectBestPet = document.getElementById('bestPet');
+      const petDescription = document.getElementById('petResult');
+
+      selectBestPet.addEventListener('change', function () {
+        const selectedBestPet = selectBestPet.value;
+
+        const petSay = {
+          dog: 'Dogs are known for their loyalty and companionship.',
+          cat: 'Cats are idependent and can be very playful.',
+          fish: 'Fish are the most diverse group of vertebrates.',
+        };
+        petBtn.addEventListener('click', function () {
+          if (selectedBestPet === 'dog') {
+            petDescription.textContent = `Pet Description: ${petSay[selectedBestPet]}`;
+          } else if (selectedBestPet === 'cat') {
+            petDescription.textContent = `Pet Description: ${petSay[selectedBestPet]}`;
+          } else if (selectedBestPet === 'fish') {
+            petDescription.textContent = `Pet Description: ${petSay[selectedBestPet]}`;
+          }
+        });
+      });
+
+      const selectMusicalInstruments =
+        document.getElementById('musicalInstruments');
+      const specialMusicalInstrument = document.getElementById('musicalResult');
+
+      selectMusicalInstruments.addEventListener('change', function () {
+        const selectedMusicalInstrument = selectMusicalInstruments.value;
+        const instrumentsMusical = {
+          guitar: 'The guitar produces melodic tones with its strings.',
+          piano: 'The piano creates harmonious music through its keys.',
+          violin: 'The violin produces sweet and expressive sounds.',
+        };
+        if (selectedMusicalInstrument === 'guitar') {
+          specialMusicalInstrument.textContent = `Fun Fact: ${instrumentsMusical[selectedMusicalInstrument]}`;
+        } else if (selectedMusicalInstrument === 'piano') {
+          specialMusicalInstrument.textContent = `Fun Fact: ${instrumentsMusical[selectedMusicalInstrument]}`;
+        } else if (selectedMusicalInstrument === 'violin') {
+          specialMusicalInstrument.textContent = `Fun Fact: ${instrumentsMusical[selectedMusicalInstrument]}`;
+        }
+      });
+
+      const selectPlanet = document.getElementById('galaxyPlanets');
+      const planetFact = document.getElementById('planetResult');
+
+      selectPlanet.addEventListener('change', function () {
+        const selectedPlanet = selectPlanet.value;
+        const planetName = {
+          earth: 'Earth is the only known planet with life.',
+          mars: "Mars is often called the 'Red Planet' due to its color.",
+          jupiter: 'Jupiter is the larget planet in our solar system.',
+        };
+        planetBtn.addEventListener('click', function () {
+          if (selectedPlanet === 'earth') {
+            planetFact.textContent = `Planet Fact: ${planetName[selectedPlanet]}`;
+          } else if (selectedPlanet === 'mars') {
+            planetFact.textContent = `Planet Fact: ${planetName[selectedPlanet]}`;
+          } else if (selectedPlanet === 'jupiter') {
+            planetFact.textContent = `Planet Fact: ${planetName[selectedPlanet]}`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
