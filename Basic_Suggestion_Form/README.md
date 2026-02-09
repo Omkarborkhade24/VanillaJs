@@ -10,4 +10,5 @@ Working Link: https://stackblitz.com/edit/vitejs-vite-ysvmzuxp?file=index.html
 
 Screenshot:
 
-<img width="1227" height="577" alt="image" src="https://github.com/user-attachments/assets/23c42f36-0506-4c29-8a5c-c4530776b474" />
+<img width="856" height="540" alt="image" src="https://github.com/user-attachments/assets/6532a61e-77a8-4cee-9777-d143cf1b91cf" />
+
