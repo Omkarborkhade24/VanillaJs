@@ -85,11 +85,13 @@
         const selectExperience =
           document.getElementById('selectExperience').value;
 
-        const userInputValues = `<h2>Feedback Submitted:</h2>
+        const userInputValues = `<h2>Improvement Form Submitted:</h2>
     <p><strong>Name:</strong> ${userName}</p>
-    <p><strong>Feedback:</strong> ${feedBack}</p>
+    <p><strong>Improvements suggested:</strong> ${feedBack}</p>
     <p><strong>Service Rating:</strong> ${services}</p>
-    <p><strong>Topics of Interest:</strong> ${selectedInterests.join(', ')}</p>
+    <p><strong>Areas of Improvement:</strong> ${selectedInterests.join(
+      ', '
+    )}</p>
     <p><strong>Overall Experience:</strong> ${selectExperience}</p>`;
 
         const divElement = document.getElementById('formResult');
