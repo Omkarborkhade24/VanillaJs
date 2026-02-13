@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <label for="ageInput">Enter your age:</label>
+    <input id="ageInput" />
+    <button id="showAgeBtn">Display Age</button>
+    <p id="ageResult"></p>
+    <button id="styleBtn">Check Eligibility</button>
+
+    <br />
+    <br />
+
+    <label for="salaryInput">Enter your monthly income:</label>
+    <input id="salaryInput" />
+    <button id="showSalaryBtn">Display Monthly Income</button>
+    <p id="eligibilityResult"></p>
+    <button id="styleBtnIS">Check Eligibility</button>
+
+    <br />
+    <br />
+
+    <label for="studentInput">Are you a salaried person?</label>
+    <input id="studentInput" />
+    <button id="eligibilityBtn">Display Answer</button>
+    <p id="studentResult"></p>
+    <button id="studentStyleBtn">Check Eligibility</button>
+
+    <br />
+    <br />
+
+    <label for="passwordInput">Enter your credit profile password:</label>
+    <input id="passwordInput" />
+    <button id="passwordBtn">Display Answer</button>
+    <p id="passwordResult"></p>
+    <button id="passStyleBtn">Check Password</button>
+
+    <script>
+      const ageInput = document.querySelector('#ageInput');
+      const showAgeBtn = document.querySelector('#showAgeBtn');
+      const ageResult = document.querySelector('#ageResult');
+      const styleBtn = document.querySelector('#styleBtn');
+
+      showAgeBtn.addEventListener('click', function () {
+        const ageValue = ageInput.value;
+        ageResult.textContent = `Your Age: ${ageValue}`;
+        ageResult.style.color = 'black';
+      });
+
+      styleBtn.addEventListener('click', function () {
+        const age = ageInput.value;
+        if (age >= 18) {
+          ageResult.style.color = 'green';
+        } else if (age < 18) {
+          ageResult.style.color = 'red';
+        }
+      });
+
+      const studentInput = document.querySelector('#studentInput');
+      const eligibilityBtn = document.querySelector('#eligibilityBtn');
+      const studentResult = document.querySelector('#studentResult');
+      const studentStyleBtn = document.querySelector('#studentStyleBtn');
+
+      eligibilityBtn.addEventListener('click', function () {
+        const studentStatus = studentInput.value;
+        studentResult.textContent = `Your Answer: ${studentStatus}`;
+        studentResult.style.color = 'black';
+      });
+
+      studentStyleBtn.addEventListener('click', function () {
+        const student = studentInput.value;
+        if (student === 'Yes' || student === 'yes' || student === 'YES') {
+          studentResult.textContent = `You are Eligible`;
+          studentResult.style.color = 'green';
+        } else if (student === 'No' || student === 'no' || student === 'NO') {
+          studentResult.textContent = `You are not eligible`;
+          studentResult.style.color = 'red';
+        } else {
+          studentResult.textContent =
+            "Invalid response. Please enter 'Yes' or 'No'.";
+          studentResult.style.color = 'black';
+        }
+      });
+
+      const salaryInput = document.querySelector('#salaryInput');
+      const showSalaryBtn = document.querySelector('#showSalaryBtn');
+      const eligibilityResult = document.querySelector('#eligibilityResult');
+      const styleBtnIS = document.querySelector('#styleBtnIS');
+
+      showSalaryBtn.addEventListener('click', function () {
+        const ageValue = salaryInput.value;
+        eligibilityResult.textContent = `Your Monthly Income: ${ageValue}`;
+        eligibilityResult.style.color = 'black';
+      });
+
+      styleBtnIS.addEventListener('click', function () {
+        const age = salaryInput.value;
+        if (age >= 25000) {
+          eligibilityResult.style.color = 'green';
+        } else if (age < 25000) {
+          eligibilityResult.style.color = 'red';
+        }
+      });
+
+      const passwordInput = document.querySelector('#passwordInput');
+      const passwordBtn = document.querySelector('#passwordBtn');
+      const passwordResult = document.querySelector('#passwordResult');
+      const passStyleBtn = document.querySelector('#passStyleBtn');
+
+      passwordBtn.addEventListener('click', function () {
+        const passwordData = passwordInput.value;
+        passwordResult.textContent = `Your credit profile password: ${passwordData}`;
+        passwordResult.style.color = 'black';
+      });
+
+      passStyleBtn.addEventListener('click', function () {
+        const password = passwordInput.value;
+        const atIndex = password.indexOf('@');
+        if (atIndex > 0) {
+          passwordResult.textContent = `Password Accepted.`;
+          passwordResult.style.color = `green`;
+        } else if (atIndex < 0) {
+          passwordResult.textContent = `Invalid Password. Password must contain @ symbol.`;
+          passwordResult.style.color = `red`;
+        }
+      });
+    </script>
+  </body>
+</html>
