@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VA1.3_HW2</title>
+  </head>
+  <body>
+    <label for="bookReview">Enter your gadget review:</label>
+    <textarea id="bookReview" rows="4" cols="50"></textarea>
+    <button id="bookBtn">Display Gadget Review</button>
+    <p id="bookResult"></p>
+
+    <label for="personalTextarea"
+      >Enter your personal favorite gadget specifications:</label
+    >
+    <textarea id="personalTextarea" rows="5" cols="50"></textarea>
+    <button id="bioBtn">Display Styled Specifications</button>
+    <p id="personalResult"></p>
+
+    <label for="diaryTextarea">Enter Latest Trending Gadget:</label>
+    <textarea id="diaryTextarea" rows="5" cols="50"></textarea>
+    <button id="diaryBtn">Display Trending Gadget</button>
+    <p id="diaryResult"></p>
+
+    <script>
+      const bookReview = document.getElementById('bookReview');
+      const bookBtn = document.getElementById('bookBtn');
+      const bookResult = document.getElementById('bookResult');
+
+      bookBtn.addEventListener('click', function () {
+        const review = bookReview.value;
+        bookResult.textContent = `Your gadget review: ${review}`;
+      });
+
+      const personalTextarea = document.getElementById('personalTextarea');
+      const bioBtn = document.getElementById('bioBtn');
+      const personalResult = document.getElementById('personalResult');
+
+      bioBtn.addEventListener('click', function () {
+        const bio = personalTextarea.value;
+        personalResult.innerHTML = `<i>${bio}</i>`;
+      });
+
+      const diaryTextarea = document.getElementById('diaryTextarea');
+      const diaryBtn = document.getElementById('diaryBtn');
+      const diaryResult = document.getElementById('diaryResult');
+
+      diaryBtn.addEventListener('click', function () {
+        const diary = diaryTextarea.value;
+        const currentDateTime = new Date().toLocaleString();
+        diaryResult.innerHTML = `<p><strong>${currentDateTime}</strong></p>
+          <p>${diary}</p>`;
+      });
+    </script>
+  </body>
+</html>
