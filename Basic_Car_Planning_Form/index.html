@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <label for="ageInput">Enter your age:</label>
+    <input type="number" id="ageInput" />
+    <button id="ageButton">Validate Age</button>
+    <p id="ShowMessage"></p>
+
+    <label for="animalInput">Enter your favorite car name:</label>
+    <input type="text" id="animalInput" />
+    <button id="displayButton">Display Car Name</button>
+    <p id="ShowFavAnimal"></p>
+
+    <label for="colorInput">Enter your favorite car color:</label>
+    <input type="text" id="colorInput" />
+    <button id="colorButton">Display Car Color</button>
+    <p id="ShowFavColor"></p>
+
+    <label for="messageInput">Are you planning to buy the car (Yes/No Question):</label>
+    <input type="text" id="messageInput" />
+    <button id="messageButton">Display Answer</button>
+    <p id="MessageShow"></p>
+
+    <label for="numberInput">Enter a number for car budget:</label>
+    <input type="number" id="numberInput" />
+    <button id="checkButton">Check Budget</button>
+    <p id="evenOrOdd"></p>
+
+    <script>
+      const ageInput = document.getElementById('ageInput');
+      const ageButton = document.getElementById('ageButton');
+      const greetingMessage = document.getElementById('ShowMessage');
+
+      // what you want to do with the dom elements
+      ageButton.addEventListener('click', function () {
+        const userAge = ageInput.value;
+
+        if (userAge >= 18 && userAge <= 100) {
+          ShowMessage.textContent = 'Valid age.';
+        } else {
+          ShowMessage.textContent =
+            'Invalid age. Please enter an age between 18 and 100.';
+        }
+      });
+
+      const animalInput = document.getElementById('animalInput');
+      const displayButton = document.getElementById('displayButton');
+      const ShowFavAnimal = document.getElementById('ShowFavAnimal');
+
+      displayButton.addEventListener('click', function () {
+        const animal = animalInput.value;
+        ShowFavAnimal.textContent = `The user Favorite car is ${animal}`;
+      });
+
+      const colorInput = document.getElementById('colorInput');
+      const colorButton = document.getElementById('colorButton');
+      const color = document.getElementById('ShowFavColor');
+
+      colorButton.addEventListener('click', function () {
+        const color = colorInput.value;
+        ShowFavColor.textContent = `The user Favorite car color is ${color}`;
+      });
+
+      const messageInput = document.getElementById('messageInput');
+      const messageButton = document.getElementById('messageButton');
+      const displayMessage = document.getElementById('MessageShow');
+
+      messageButton.addEventListener('click', function () {
+        const message = messageInput.value;
+        MessageShow.textContent = `You said '${message}'.`;
+      });
+
+      const numberInput = document.getElementById('numberInput');
+      const checkButton = document.getElementById('checkButton');
+      const evenOrOdd = document.getElementById('evenOrOdd');
+
+      checkButton.addEventListener('click', function () {
+        const number = numberInput.value;
+        if (number > 1500000) {
+          evenOrOdd.textContent = `${number} budget is good.`;
+        } else {
+          evenOrOdd.textContent = `${number} budget is okayish.`;
+        }
+      });
+    </script>
+  </body>
+</html>
