@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <label>Program 1: Select a game genre:</label> <br />
+    <input type="radio" name="music" value="Action" /> Action <br />
+    <input type="radio" name="music" value="Horror" /> Horror <br />
+    <input type="radio" name="music" value="Sport" /> Sport
+    <p id="musicResult"></p>
+
+    <label>Program 2: Choose a console preference:</label> <br />
+    <input type="radio" name="language" value="Smartphone" /> Smartphone <br />
+    <input type="radio" name="language" value="Laptop" /> Laptop/Desktop <br />
+    <input type="radio" name="language" value="PS5" /> PS5 <br />
+    <p id="languageResult"></p>
+
+    <label>Program 3: Select a player mode:</label> <br />
+    <input type="radio" name="jobRole" value="Solo" /> Solo <br />
+    <input type="radio" name="jobRole" value="Duo" /> Duo <br />
+    <input type="radio" name="jobRole" value="Team-Player" /> Team-Player
+    <button id="jobBtn">Display Selected Player Mode</button>
+    <p id="jobResult"></p>
+
+    <label>Program 4: Choose a favorite mission: </label> <br />
+    <input type="radio" name="hobbies" value="completing game tasks" />
+    completing game tasks <br />
+    <input type="radio" name="hobbies" value="exploring game" /> exploring game
+    <br />
+    <input
+      type="radio"
+      name="hobbies"
+      value="upgrading the charachter's stuff"
+    />
+    upgrading the charachter's stuff
+    <button id="hobbiesBtn">Display Selected Mission</button>
+    <p id="hobbiesResult"></p>
+
+    <label>Program 5: Select a clothing style:</label> <br />
+    <input type="radio" name="style" value="Casual" /> Casual <br />
+    <input type="radio" name="style" value="Formal" /> Formal <br />
+    <input type="radio" name="style" value="Sporty" /> Sporty
+    <button id="styleBtn">Display Selected Style</button>
+    <p id="styleResult"></p>
+
+    <script>
+      const selectMusic = document.getElementsByName('music');
+      const genreResult = document.getElementById('musicResult');
+
+      for (let i = 0; i < selectMusic.length; i++) {
+        selectMusic[i].addEventListener('change', function () {
+          const selectedMusic = document.querySelector(
+            'input[name="music"]:checked'
+          ).value;
+          genreResult.textContent = `Selected Genre: ${selectedMusic}`;
+        });
+      }
+
+      const selectLanguage = document.getElementsByName('language');
+      const languageBtn = document.getElementById('languageResult');
+
+      for (let i = 0; i < selectLanguage.length; i++) {
+        selectLanguage[i].addEventListener('change', function () {
+          const selectedLanguage = document.querySelector(
+            'input[name="language"]:checked'
+          ).value;
+          languageBtn.textContent = `Selected Preference: ${selectedLanguage}`;
+        });
+      }
+
+      const selectJob = document.getElementsByName('jobRole');
+      const roleResult = document.getElementById('jobResult');
+
+      jobBtn.addEventListener('click', function () {
+        const selectedJob = document.querySelector(
+          'input[name="jobRole"]:checked'
+        );
+        if (selectedJob) {
+          roleResult.textContent = `Selected Player Mode: ${selectedJob.value}`;
+        } else {
+          roleResult.textContent = `Please select a player mode`;
+        }
+      });
+
+      const selectHobbies = document.getElementsByName('hobbies');
+      const favoriteResult = document.getElementById('hobbiesResult');
+
+      hobbiesBtn.addEventListener('click', function () {
+        const selectedHobbies = document.querySelector(
+          'input[name="hobbies"]:checked'
+        );
+        if (selectedHobbies) {
+          favoriteResult.textContent = `Selected Mission: ${selectedHobbies.value}`;
+        } else {
+          favoriteResult.textContent = `Please select a mission`;
+        }
+      });
+
+      const selectStyle = document.getElementsByName('style');
+      const styleSwag = document.getElementById('styleResult');
+
+      styleBtn.addEventListener('click', function () {
+        const selectedStyle = document.querySelector(
+          'input[name="style"]:checked'
+        );
+        if (styleSwag) {
+          styleSwag.textContent = `Selected Clothing Style: ${selectedStyle.value}`;
+        } else {
+          styleSwag.textContent = `Please select a clothing clothing style.`;
+        }
+      });
+    </script>
+  </body>
+</html>
