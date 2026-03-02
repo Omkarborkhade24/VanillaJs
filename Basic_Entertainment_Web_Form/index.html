@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <label>Choose a anime genre:</label>
+    <select id="movieGenre">
+      <option value="Action">Action</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+    </select>
+    <p id="movieResult"></p>
+
+    <label>Select a weather condition:</label>
+    <select id="weatherSeason">
+      <option value="Sunny">Sunny</option>
+      <option value="Rainy">Rainy</option>
+      <option value="Snowy">Snowy</option>
+    </select>
+    <p id="weatherResult"></p>
+
+    <label>Select a language:</label>
+    <select id="languageGenre">
+      <option value="english">English</option>
+      <option value="spanish">Spanish</option>
+      <option value="french">French</option>
+    </select>
+    <button id="languageBtn">Display Greeting</button>
+    <p id="languageResult"></p>
+
+    <label>Choose a musical instrument:</label>
+    <select id="musicalInstruments">
+      <option value="piano">Piano</option>
+      <option value="guitar">Guitar</option>
+      <option value="violin">Violin</option>
+    </select>
+    <button id="musicalBtn">Display Fun Fact</button>
+    <p id="musicalResult"></p>
+
+    <label>Select a vehicle:</label>
+    <select id="bestPet">
+      <option value="bike">Bike</option>
+      <option value="car">Car</option>
+      <option value="boat">Boat</option>
+      <option value="horse">Horse</option>
+    </select>
+    <button id="petBtn">Display Vehicle Description</button>
+    <p id="petResult"></p>
+
+    <script>
+      const selectMovie = document.getElementById('movieGenre');
+      const movieFav = document.getElementById('movieResult');
+
+      selectMovie.addEventListener('change', function () {
+        const selectedMovie = selectMovie.value;
+        const movies = {
+          Action: 'The Dark Knight',
+          Comedy: 'Superbad',
+          Drama: 'The Shawshank Redemption',
+        };
+        movieFav.textContent = `The Recommended ${selectedMovie} Movie: ${movies[selectedMovie]}`;
+      });
+
+      const selectWeather = document.getElementById('weatherSeason');
+      const weatherCondition = document.getElementById('weatherResult');
+
+      selectWeather.addEventListener('change', function () {
+        const selectedWeather = selectWeather.value;
+        const weather = {
+          Sunny: 'Picnic in the park',
+          Rainy: 'Movie day indoors',
+          Snowy: 'Build a snowman',
+        };
+
+        if (selectedWeather === 'Rainy') {
+          weatherCondition.textContent = `Activity Suggestion: ${weather[selectedWeather]}`;
+        } else {
+          weatherCondition.textContent = `Outdoor Activity Suggestion: ${weather[selectedWeather]}`;
+        }
+      });
+
+      const selectLanguage = document.getElementById('languageGenre');
+      const langGreet = document.getElementById('languageResult');
+
+      selectLanguage.addEventListener('change', function () {
+        const selectedLanguage = selectLanguage.value;
+        const commonGreet = {
+          english: 'Hello',
+          spanish: 'Hola!',
+          french: 'Bonjour!',
+        };
+        languageBtn.addEventListener('click', function () {
+          if (selectedLanguage === 'english') {
+            langGreet.textContent = `Common Greeting: ${commonGreet[selectedLanguage]}`;
+          } else if (selectedLanguage === 'spanish') {
+            langGreet.textContent = `Common Greeting: ${commonGreet[selectedLanguage]}`;
+          } else if (selectedLanguage === 'french') {
+            langGreet.textContent = `Common Greeting: ${commonGreet[selectedLanguage]}`;
+          }
+        });
+      });
+
+      const selectMusicalInstruments =
+        document.getElementById('musicalInstruments');
+      const specialMusicalInstrument = document.getElementById('musicalResult');
+
+      selectMusicalInstruments.addEventListener('change', function () {
+        const selectedMusicalInstrument = selectMusicalInstruments.value;
+        const instrumentsMusical = {
+          piano: 'The piano has 88 keys.',
+          guitar:
+            'The guitar is one of the most popular instruments in the world.',
+          violin:
+            'The violin is a string instrument known for its sweet sound.',
+        };
+        musicalBtn.addEventListener('click', function () {
+          if (selectedMusicalInstrument === 'piano') {
+            specialMusicalInstrument.textContent = `Fun Fact: ${instrumentsMusical[selectedMusicalInstrument]}`;
+          } else if (selectedMusicalInstrument === 'guitar') {
+            specialMusicalInstrument.textContent = `Fun Fact: ${instrumentsMusical[selectedMusicalInstrument]}`;
+          } else if (selectedMusicalInstrument === 'violin') {
+            specialMusicalInstrument.textContent = `Fun Fact: ${instrumentsMusical[selectedMusicalInstrument]}`;
+          }
+        });
+      });
+
+      const selectBestPet = document.getElementById('bestPet');
+      const petDescription = document.getElementById('petResult');
+
+      selectBestPet.addEventListener('change', function () {
+        const selectedBestPet = selectBestPet.value;
+
+        const petSay = {
+          bike: 'Bikes, also known as motorcycles, are two-wheeled vehicles powered by an engine. They are designed for single or dual riders and are known for their lightweight structure and agility.',
+          car: 'Cars, are not just vehicles; they are symbols of identity, status, and adventure. They serve as a means of transportation, a mode of expression, and a source of bonding and camaraderie.',
+          boat: 'Boats are considered vehicles because they meet the fundamental criteria for vehicle classification: they can propel themselves and are used to convey people or goods from one location to another. ',
+          horse:
+            'Horses have played a significant role in human transportation throughout history. They were the primary means of locomotion before the advent of automobiles, allowing people to travel greater distances with less physical exertion.',
+        };
+        petBtn.addEventListener('click', function () {
+          if (selectedBestPet === 'bike') {
+            petDescription.textContent = `Vehicle Description: ${petSay[selectedBestPet]}`;
+          } else if (selectedBestPet === 'car') {
+            petDescription.textContent = `Vehicle Description: ${petSay[selectedBestPet]}`;
+          } else if (selectedBestPet === 'boat') {
+            petDescription.textContent = `Vehicle Description: ${petSay[selectedBestPet]}`;
+          } else if (selectedBestPet === 'horse') {
+            petDescription.textContent = `Vehicle Description: ${petSay[selectedBestPet]}`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
