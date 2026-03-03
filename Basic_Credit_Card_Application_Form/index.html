@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inquiry Form</title>
+</head>
+
+<body>
+  <main>
+    <form id="enrollmentForm">
+      <h1>Credit Card Form</h1>
+      <label for="fullName"><strong>Full Name:</strong></label>
+      <input type="text" id="fullName" />
+      <br /><br />
+
+      <label for="phoneNumber"><strong>Phone Number:</strong></label>
+      <input type="number" id="phoneNumber" />
+      <br /><br />
+
+      <label for="emailAddress"><strong>Email Id:</strong></label>
+      <input type="email" id="emailAddress" />
+      <br /><br />
+
+      <label><strong>Gender:</strong></label><br />
+      <label for="male"
+        ><input type="radio" name="gender" value="Male" id="male" /> Male</label><br />
+      <label for="female"
+        ><input type="radio" name="gender" value="Female" id="female" />
+        Female</label><br />
+      <label for="other"
+        ><input type="radio" name="gender" value="Other" id="other" />
+        Other</label><br /><br />
+
+      <label><strong>Are you a sallaried person?:</strong></label><br />
+      <label for="yes"
+        ><input type="radio" name="isGraduate" value="Yes" id="yes" />
+        Yes</label><br />
+      <label for="no"
+        ><input type="radio" name="isGraduate" value="No" id="no" /> No</label><br />
+      <label for="dropout"
+        ><input type="radio" name="isGraduate" value="Self-Employeed" id="dropout" />
+        Self-Employeed</label><br />
+      <br />
+
+      <strong><label>select your annual income range:</label></strong><br />
+      <select id="workingStatus">
+        <option value="3-6LPA">3-6LPA</option>
+        <option value="6-12LPA">6-12LPA</option>
+        <option value="12-36LPA">12-36LPA</option>
+      </select>
+      <br /><br />
+
+      <strong><label>Which of the following credit card you wish to obtain from our bank?:</label></strong> <br />
+
+      <label for="youtube"><input type="checkbox" name="socialChannels" value="Membership Rewards Credit Card" id="youtube" /> Membership Rewards Credit Card</label> <br />
+
+      <label for="instagram"><input type="checkbox" name="socialChannels" value="SmartEarn Credit Card" id="instagram" /> SmartEarn Credit Card</label> <br />
+
+      <label for="linkedin"><input type="checkbox" name="socialChannels" value="Gold Card" id="linkedin" /> Gold Card</label> <br />
+
+      <label for="twitter"><input type="checkbox" name="socialChannels" value="Platinum Card" id="twitter" /> Platinum Card</label> <br />
+
+      <label for="friends&family"><input type="checkbox" name="socialChannels" value="Platinum Reserve Card" id="friends&family"/>Platinum Reserve Card</label> <br />
+      <label for="other1"><input type="checkbox" name="socialChannels" value="Platinum Exclusive Card" id="other1"/>Platinum Exclusive Card</label> <br />
+
+      <br /><br />
+      <lebel for="term1"><input
+        type="checkbox"
+        name="confirm"
+        value="I confirm that all information in this form is factually true." id="term1"
+      /><strong
+        >I confirm that all information in this form is factually true.</label></strong>
+
+        <br /><br />
+
+        <input type="submit" value="Submit Details" />
+    </form>
+
+    <div id="formResult"></div>
+  </main>
+
+  <script>
+    const enrollmentForm = document.getElementById('enrollmentForm');
+      enrollmentForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const fullName = document.getElementById('fullName').value;
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const emailAddress = document.getElementById('emailAddress').value;
+        const gender = document.querySelector(
+          'input[name="gender"]:checked'
+        ).value;
+        const isGraduate = document.querySelector(
+          'input[name="isGraduate"]:checked'
+        ).value;
+        const workingStatus = document.getElementById('workingStatus').value;
+        const socialChannels = document.querySelectorAll(
+          'input[name="socialChannels"]:checked'
+        );
+        let selectedSocialChannels = [];
+        for (let i = 0; i < socialChannels.length; i++) {
+          selectedSocialChannels.push(socialChannels[i].value);
+        }
+
+        const userInputValues = `<h2>Details Submitted:</h2>
+    <p><strong>Name:</strong> ${fullName}</p>
+    <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+    <p><strong>Email ID:</strong> ${emailAddress}</p>
+    <p><strong>Gender:</strong> ${gender}</p>
+    <p><strong>Are you a sallaried person?:</strong> ${isGraduate}</p>
+    <p><strong>select your annual income range:</strong> ${workingStatus}</p>
+    <p><strong>Which of the following credit card you wish to obtain from our bank?:</strong> ${selectedSocialChannels.join(
+      ', '
+    )}</p>`;
+
+        const divElement = document.getElementById('formResult');
+        divElement.innerHTML = userInputValues;
+      });
+  </script>
+</body>
+
+</html>
