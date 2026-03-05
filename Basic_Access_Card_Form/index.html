@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <form id="feedbackForm">
+      <h2>Access Card Application Form</h2>
+
+      <label for="userName">Name:</label>
+      <input type="text" id="userName" />
+      <br /><br />
+
+      <label for="feedBack">Address:</label><br />
+      <textarea id="feedBack" row="5" cols="30"></textarea>
+      <br /><br />
+
+      <label>Designation:</label><br />
+      <label for="excellent"
+        ><input
+          type="radio"
+          name="services"
+          value="Full-Stack Developer"
+          id="excellent"
+        />
+        Full-Stack Developer</label
+      ><br />
+      <label for="good"
+        ><input
+          type="radio"
+          name="services"
+          value="Business Analyst"
+          id="good"
+        />
+        Business Analyst</label
+      ><br />
+      <label for="fair"
+        ><input
+          type="radio"
+          name="services"
+          value="Project Manager"
+          id="fair"
+        />
+        Project Manager</label
+      ><br /><br />
+
+      <label>Select Office Location:</label><br />
+      <label for="technology"
+        ><input
+          type="checkbox"
+          name="interests"
+          value="Mumbai"
+          id="technology"
+        />
+        Mumbai</label
+      ><br />
+      <label for="travel"
+        ><input type="checkbox" name="interests" value="Noida" id="travel" />
+        Noida</label
+      ><br />
+      <label for="food"
+        ><input type="checkbox" name="interests" value="Bangalore" id="food" />
+        Bangalore</label
+      ><br />
+      <br />
+
+      <label>Range of Experience:</label><br />
+      <select id="selectExperience">
+        <option value="0-2 Years">0-2 Years</option>
+        <option value="3-6 Years">3-6 Years</option>
+        <option value="6+ Years">6+ Years</option>
+      </select>
+      <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <div id="formResult"></div>
+
+    <script>
+      const feedbackForm = document.getElementById('feedbackForm');
+      feedbackForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const userName = document.getElementById('userName').value;
+        const feedBack = document.getElementById('feedBack').value;
+        const services = document.querySelector(
+          'input[name="services"]:checked'
+        ).value;
+        const interests = document.querySelectorAll(
+          'input[name="interests"]:checked'
+        );
+        let selectedInterests = [];
+        for (let i = 0; i < interests.length; i++) {
+          selectedInterests.push(interests[i].value);
+        }
+
+        const selectExperience =
+          document.getElementById('selectExperience').value;
+
+        const userInputValues = `<h3>Application Submitted:</h3>
+    <p><strong>Name:</strong> ${userName}</p>
+    <p><strong>Address:</strong> ${feedBack}</p>
+    <p><strong>Designation:</strong> ${services}</p>
+    <p><strong>Office Location:</strong> ${selectedInterests.join(', ')}</p>
+    <p><strong>Professional Experience:</strong> ${selectExperience}</p>
+    <p>You will recieve your access card in next 3-4 working days.</p>`;
+        const divElement = document.getElementById('formResult');
+        divElement.innerHTML = userInputValues;
+      });
+    </script>
+  </body>
+</html>
