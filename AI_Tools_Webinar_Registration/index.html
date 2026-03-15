@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <form id="eventRegistrationForm">
+      <h1>Learn AI Tools Optimization Webinar Form</h1>
+
+      <label for="userName">Name:</label>
+      <input type="text" id="userName" />
+      <br /><br />
+
+      <label for="emailID">EmailAddress:</label>
+      <input type="text" id="emailID" />
+      <br /><br />
+
+      <label>Joining Through:</label><br />
+      <label for="conference"
+        ><input type="radio" name="events" value="Zoom" id="conference" />
+        Zoom</label
+      ><br />
+      <label for="workshop"
+        ><input type="radio" name="events" value="MS Teams" id="workshop" />
+        MS Teams</label
+      ><br />
+      <label for="networking"
+        ><input type="radio" name="events" value="Offline" id="networking" />
+        Offline</label
+      ><br /><br />
+
+      <label>Experience In:</label><br />
+      <label for="vegetarian"
+        ><input
+          type="checkbox"
+          name="restrictions"
+          value="Developer"
+          id="vegetarian"
+        />
+        Developer</label
+      ><br />
+      <label for="vegan"
+        ><input type="checkbox" name="restrictions" value="Q/A" id="vegan" />
+        Q/A</label
+      ><br />
+      <label for="gluten-free"
+        ><input
+          type="checkbox"
+          name="restrictions"
+          value="Dev-Ops"
+          id="gluten-free"
+        />
+        Dev-Ops</label
+      ><br />
+      <br />
+
+      <label>T-shirt Size:</label><br />
+      <select id="sizeSelect">
+        <option value="Small">Small</option>
+        <option value="Medium">Medium</option>
+        <option value="Large">Large</option>
+      </select>
+      <br /><br />
+      <input type="submit" value="Register" />
+    </form>
+
+    <div id="formResult"></div>
+
+    <script>
+      const eventRegistrationForm = document.getElementById(
+        'eventRegistrationForm'
+      );
+      eventRegistrationForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const userName = document.getElementById('userName').value;
+        const emailID = document.getElementById('emailID').value;
+        const events = document.querySelector(
+          'input[name="events"]:checked'
+        ).value;
+        const restrictions = document.querySelectorAll(
+          'input[name="restrictions"]:checked'
+        );
+        let selectedRestrictions = [];
+        for (let i = 0; i < restrictions.length; i++) {
+          selectedRestrictions.push(restrictions[i].value);
+        }
+
+        const selectedSize = document.getElementById('sizeSelect').value;
+
+        const userInputValues = `<h2>Registration Details:</h2>
+    <p><strong>Name:</strong> ${userName}</p>
+    <p><strong>Email:</strong> ${emailID}</p>
+    <p><strong>Joining Through:</strong> ${events}</p>
+    <p><strong>Experience In:</strong> ${selectedRestrictions.join(
+      ', '
+    )}</p>
+    <p><strong>T-shirt Size:</strong> ${selectedSize}</p>
+    <p>Congratulations ${userName}, webinar details will be shared through email.</p>`;
+
+        const divElement = document.getElementById('formResult');
+        divElement.innerHTML = userInputValues;
+      });
+    </script>
+  </body>
+</html>
