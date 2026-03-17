@@ -1,1 +1,78 @@
-Hello World.
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <form id="userProfileForm">
+    <h1>Car Insurance Purchase Form</h1>
+
+    <label for="userName">Name on RC:</label>
+    <input type="text" id="userName"/>
+    <br><br>
+
+    <label for="fullAddress">Enter Car Registration Number:<label><br>
+    <input type="text" id="fullAddress"/>
+    <br><br>
+
+    <label>Car Segament:</label><br>
+    <label for="male"><input type="radio" name="gender" value="Sedan" id="male"/> Sedan</label><br>
+    <label for="female"><input type="radio" name="gender" value="Hachback" id="female"/> Hachback</label><br>
+    <label for="other"><input type="radio" name="gender" value="SUV" id="other"/> SUV</label><br>
+
+    <label>Select Car Insurance Type:</label><br>
+    <label for="reading"><input type="radio" name="interests" value="Brand New" id="reading"/> Brand New</label><br>
+    <label for="gardening"><input type="radio" name="interests" value="Renewal while being insured" id="gardening"/> Renewal while being insured</label><br>
+    <label for="painting"><input type="radio" name="interests" value="Renewal after insurance expiry" id="painting"/> Renewal after insurance expiry</label><br>
+    <br>
+
+    <label>Select Insurance Coverage:</label><br>
+    <select id="colorSelect">
+      <option value="First Party Insurance">First Party Insurance</option>
+      <option value="Third Party Insurance">Third Party Insurance</option>
+      <option value="Zero Dep Bumper to Bumper (Both Party Insured)">Zero Dep Bumper to Bumper (Both Party Insured)</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit"/>
+  </form>
+
+  <div id="formResult"></div>
+
+  <script>
+  const userProfileForm = document.getElementById("userProfileForm")
+  userProfileForm.addEventListener("submit", function(event){
+
+    event.preventDefault()
+
+    const userName = document.getElementById("userName").value
+    const fullAddress = document.getElementById("fullAddress").value
+    const gender = document.querySelector('input[name="gender"]:checked').value
+    const interests = document.querySelectorAll('input[name="interests"]:checked')
+    let selectedInterests = []
+    for(let i=0; i < interests.length; i++){
+      selectedInterests.push(interests[i].value)
+    }
+
+    const favColor = document.getElementById("colorSelect").value
+
+    const userInputValues = `<h2>Submitted Information</h2>
+    <p>Name on RC: <strong>${userName}</strong></p>
+    <p>Enter Car Registration Number: <strong>${fullAddress}</strong></p>
+    <p>Car Segament: <strong>${gender}</strong></p>
+    <p>Select Car Insurance Type: <strong>${selectedInterests.join(', ')}</strong></p>
+    <p>Select Insurance Coverage: <strong>${favColor}</strong></p>
+    <br>
+    <br>
+    Congratulations <strong>${userName}</strong> for you vehicle renewal, wishing you safe driving.`
+
+    const divElement = document.getElementById("formResult")
+    divElement.innerHTML = userInputValues
+
+  })
+  </script>
+
+  </body>
+</html>
